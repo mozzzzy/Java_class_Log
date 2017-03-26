@@ -1,0 +1,12 @@
+26.3.2017
+
+program : Log
+
+	ログを書き込むためのクラス。
+
+
+・compile
+	javac Log_test.java
+
+・execute
+	java Log_test
