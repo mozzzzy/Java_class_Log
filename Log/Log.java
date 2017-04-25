@@ -35,35 +35,32 @@ public class Log{
 				logfile.createNewFile();
 			}catch(IOException e){
 			}
-		}else{
+		}
 
-			/*サイズチェック*/
-			System.out.println("##logfile.length:"+logfile.length()+" max_filesize:"+max_filesize);
-			//もし指定したmaxサイズを超えていたら
-			if(logfile.length() > max_filesize){
-				System.out.println("##エクシード");
-				//削除
-				logfile.delete();
-				try{
-					//ファイルを新規作成
-					System.out.println("##新規作成");
-					logfile.createNewFile();
-				}catch(IOException e){
-				}
-			}
-
-
-			/*書き込み*/
+		/*サイズチェック*/
+		System.out.println("##logfile.length:"+logfile.length()+" max_filesize:"+max_filesize);
+		//もし指定したmaxサイズを超えていたら
+		if(logfile.length() > max_filesize){
+			System.out.println("##エクシード");
+			//削除
+			logfile.delete();
 			try{
-				BufferedWriter bw = new BufferedWriter(new FileWriter(logfile,true));
-				bw.write(DateTime.returnDatetime()+"  "+message);
-				bw.newLine();
-				bw.close();
+				//ファイルを新規作成
+				System.out.println("##新規作成");
+				logfile.createNewFile();
 			}catch(IOException e){
 			}
-
-
-
 		}
+
+
+		/*書き込み*/
+		try{
+			BufferedWriter bw = new BufferedWriter(new FileWriter(logfile,true));
+			bw.write(DateTime.returnDatetime()+"  "+message);
+			bw.newLine();
+			bw.close();
+		}catch(IOException e){
+		}
+
 	}
 }
